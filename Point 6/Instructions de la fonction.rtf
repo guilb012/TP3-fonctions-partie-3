@@ -1,0 +1,50 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red42\green49\blue64;\red245\green245\blue246;}
+{\*\expandedcolortbl;;\cssrgb\c21569\c25490\c31765;\cssrgb\c96863\c96863\c97255;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa400\partightenfactor0
+
+\f0\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 La fonction 
+\f1\fs28 \cf2 \cb3 \strokec2 ajuster_vitesse_si_seul_en_avant
+\f0\fs32 \cf2 \cb3 \strokec2  prend en entr\'e9e plusieurs param\'e8tres : 
+\f1\fs28 \cf2 \cb3 \strokec2 coin_rue
+\f0\fs32 \cf2 \cb3 \strokec2 , un entier repr\'e9sentant le coin de la rue o\'f9 se trouve le v\'e9hicule concern\'e9 ; 
+\f1\fs28 \cf2 \cb3 \strokec2 vehicule_concerne
+\f0\fs32 \cf2 \cb3 \strokec2 , un pointeur vers la structure de donn\'e9es repr\'e9sentant le v\'e9hicule dont on veut ajuster la vitesse ; 
+\f1\fs28 \cf2 \cb3 \strokec2 vehicule_en_avant
+\f0\fs32 \cf2 \cb3 \strokec2 , un pointeur vers la structure de donn\'e9es repr\'e9sentant le v\'e9hicule situ\'e9 devant le v\'e9hicule concern\'e9 (s'il y en a un) ; 
+\f1\fs28 \cf2 \cb3 \strokec2 delai_depart
+\f0\fs32 \cf2 \cb3 \strokec2 , un entier repr\'e9sentant le temps de d\'e9part du v\'e9hicule ; et 
+\f1\fs28 \cf2 \cb3 \strokec2 couleur_feu
+\f0\fs32 \cf2 \cb3 \strokec2 , un entier repr\'e9sentant la couleur du feu de signalisation au niveau du coin de la rue.\
+La fonction commence par calculer la distance entre le v\'e9hicule concern\'e9 et le v\'e9hicule situ\'e9 devant lui (s'il y en a un) en appelant la fonction 
+\f1\fs28 \cf2 \cb3 \strokec2 calculer_distance
+\f0\fs32 \cf2 \cb3 \strokec2 . Elle r\'e9cup\'e8re \'e9galement la vitesse maximale du v\'e9hicule concern\'e9 en appelant la fonction 
+\f1\fs28 \cf2 \cb3 \strokec2 get_vit_max_vehicule
+\f0\fs32 \cf2 \cb3 \strokec2 .\
+Si le v\'e9hicule devant le v\'e9hicule concern\'e9 est nul, cela signifie que le v\'e9hicule est le premier dans la file et qu'il n'y a donc aucun autre v\'e9hicule devant lui. Dans ce cas, la fonction v\'e9rifie la couleur du feu de signalisation. Si le feu est rouge, la fonction appelle 
+\f1\fs28 \cf2 \cb3 \strokec2 gerer_lumiere_rouge
+\f0\fs32 \cf2 \cb3 \strokec2  pour g\'e9rer la circulation. Si le feu est jaune, elle appelle 
+\f1\fs28 \cf2 \cb3 \strokec2 gerer_lumiere_jaune
+\f0\fs32 \cf2 \cb3 \strokec2  pour avertir les conducteurs que le feu va passer au rouge. Si le feu est vert, la fonction appelle 
+\f1\fs28 \cf2 \cb3 \strokec2 set_vit_vehicule
+\f0\fs32 \cf2 \cb3 \strokec2  pour r\'e9gler la vitesse du v\'e9hicule concern\'e9 sur la vitesse maximale.\
+Si le v\'e9hicule devant le v\'e9hicule concern\'e9 n'est pas nul, la fonction r\'e9cup\'e8re la vitesse du v\'e9hicule en avant en appelant la fonction 
+\f1\fs28 \cf2 \cb3 \strokec2 get_vitesse
+\f0\fs32 \cf2 \cb3 \strokec2 , ainsi que la longueur du v\'e9hicule concern\'e9 en appelant la fonction 
+\f1\fs28 \cf2 \cb3 \strokec2 get_longueur_vehicule
+\f0\fs32 \cf2 \cb3 \strokec2 . Elle calcule \'e9galement l'espace entre les v\'e9hicules en d\'e9finissant une variable 
+\f1\fs28 \cf2 \cb3 \strokec2 espace_entre_vehicules
+\f0\fs32 \cf2 \cb3 \strokec2 .\
+\pard\pardeftab720\partightenfactor0
+\cf2 Ensuite, la fonction effectue une s\'e9rie de tests conditionnels pour ajuster la vitesse du v\'e9hicule concern\'e9 en fonction de la distance entre lui et le v\'e9hicule en avant. Si la distance est suffisante (plus grande que deux fois la longueur du v\'e9hicule concern\'e9 plus sa vitesse maximale plus l'espace entre les v\'e9hicules), la fonction appelle 
+\f1\fs28 \cf2 \cb3 \strokec2 set_vit_vehicule
+\f0\fs32 \cf2 \cb3 \strokec2  pour r\'e9gler la vitesse du v\'e9hicule concern\'e9 sur sa vitesse maximale. Si la distance est trop courte (moins de 1,5 fois la longueur du v\'e9hicule concern\'e9 plus l'espace entre les v\'e9hicules), la fonction appelle 
+\f1\fs28 \cf2 \cb3 \strokec2 set_vitesse
+\f0\fs32 \cf2 \cb3 \strokec2  pour r\'e9gler la vitesse du v\'e9hicule concern\'e9 sur la vitesse du v\'e9hicule en avant. Enfin, si la distance est comprise entre les deux, la fonction appelle 
+\f1\fs28 \cf2 \cb3 \strokec2 decelerer_vitesse
+\f0\fs32 \cf2 \cb3 \strokec2  pour d\'e9c\'e9l\'e9rer la vitesse du v\'e9hicule concern\'e9 d'une unit\'e9.\
+}
